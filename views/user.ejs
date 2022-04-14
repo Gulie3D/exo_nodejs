@@ -1,0 +1,27 @@
+<%- include('include/header') %>
+<!DOCTYPE html>
+<html>  
+  <body>
+    <div style="margin-left: 10px;">
+      <h3>Informations sur l'utilisateur :</h3>
+      <form action="/users" method="post">
+        <div class="form-group">
+          <label for="name">Prénom :</label>
+          <input name="name" type="text" class="form-control" id="name" value="<%= user.firstname %>">
+        </div>
+        <div class="form-group">
+          <label for="firstname">Nom :</label>
+          <input name="firstname" type="text" class="form-control" id="firstname" value="<%= user.name %>">
+        </div>
+        <div class="form-group">
+          <label for="age">Age :</label>
+          <input name="age" type="text" class="form-control" id="age" value="<%= user.age %>">
+        </div>
+        <input type="submit" class="btn btn-primary" value="Submit">
+      </form>
+    </div>
+    
+
+    <%- include('include/footer') %>
+  </body>
+</html>

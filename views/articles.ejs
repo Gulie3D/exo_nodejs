@@ -1,0 +1,47 @@
+<%- include('include/header') %>
+<!DOCTYPE html>
+<html>  
+  <body>
+    <h3>Liste des articles :</h3>
+    <br>
+    <% if (articles.length > 0) { %>
+      <table class="table table-striped">
+        <thead>
+          <th>Id</th>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Utilisateur</th>
+          <th>Modification</th>
+          <th>Suppression</th>
+        </thead>
+        <tbody>
+          <% articles.map( article => { %>
+          <tr>
+            <td><%= article.id %></td>
+            <td><%= article.titre %></td>
+            <td><%= article.description %></td>
+            <td><%= article.user %></td>
+            <td><a href="article/<%= article.id %>">voir</a></td>
+            <td><a href="#">supprimer</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <p>Aucun article</p>
+      <% } %> 
+
+    <!-- <% if (articles.length > 0) { %>
+      <ul>
+          <% articles.map( article => { %>
+              <li>Id : <%= article.id %>, Titre : <%= article.titre %>, Description :<a href="article/<%= article.id %>"> <%= article.description %></a>, Utilisateur : <%= article.user %></li>
+          <% }) %>
+      </ul>
+    <% } else { %>
+        <p>Aucun articles</p>
+    <% } %> -->
+
+
+    <%- include('include/footer') %>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<%- include('include/header') %>
+<!DOCTYPE html>
+<html>  
+  <body>
+    <h3>Ajouter un utilisateur</h3>
+    <br>
+    <form action="/users" method="post">
+      <div class="form-group">
+        <label for="firstname">Prénom :</label>
+        <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Entrer votre prénom ">
+      </div>
+      <div class="form-group">
+        <label for="name">Nom :</label>
+        <input name="name" type="text" class="form-control" id="name" placeholder="Entrer votre nom ">
+      </div>
+      <div class="form-group">
+        <label for="age">Age :</label>
+        <input name="age" type="text" class="form-control" id="age" placeholder="Entrer votre age ">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <br>
+    <h3>Liste des utilisateurs :</h3>
+    <br>
+    <% if (users.length > 0) { %>
+      <table class="table table-striped">
+        <thead>
+          <th>Id</th>
+          <th>Prénom</th>
+          <th>Nom</th>
+          <th>Age</th>
+          <th>Modification</th>
+          <th>Suppression</th>
+        </thead>
+        <tbody>
+          <% users.map( user => { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.firstname %></td>
+            <td><%= user.name %></td>
+            <td><%= user.age %></td>
+            <td><a href="/user/<%= user.id %>">voir</a></td>
+            <td><a href="/user/<%= user.id %>">supprimer</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <p>Aucun utilisateur</p>
+      <% } %>  
+
+    <%- include('include/footer') %>
+  </body>
+</html>

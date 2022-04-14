@@ -1,0 +1,60 @@
+<%- include('include/header') %>
+<!DOCTYPE html>
+<html>  
+  <body>
+    <h3>Ajouter un article</h3>
+    <br>
+    <form action="/article" method="post">
+      <div class="form-group">
+        <label for="titre">Titre :</label>
+        <input type="text" class="form-control" id="titre" placeholder="Entrer votre titre ">
+      </div>
+      <div class="form-group">
+        <label for="description">Description :</label>
+        <input type="text" class="form-control" id="description" placeholder="Entrer votre description ">
+      </div>
+      <div class="form-group">
+        <label for="user">Utilisateur :</label>
+        <select name="user" id="user">
+          <% users.map( user => { %>
+              <option value="<%= user.id %>"><%= user.firstname %> <%= user.name %></option>
+          <% }) %>
+      </select>
+      </div>
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <br>
+    <h3>Liste des articles :</h3>
+    <br>
+
+    <% if (articles.length > 0) { %>
+      <table class="table table-striped">
+        <thead>
+          <th>Id</th>
+          <th>Titre</th>
+          <th>Description</th>
+          <th>Utilisateur</th>
+          <th>Modification</th>
+          <th>Suppression</th>
+        </thead>
+        <tbody>
+          <% articles.map( article => { %>
+          <tr>
+            <td><%= article.id %></td>
+            <td><%= article.titre %></td>
+            <td><%= article.description %></td>
+            <td><%= article.user %></td>
+            <td><a href="/article/<%= article.id %>">voir</a></td>
+            <td><a href="#">supprimer</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+        <p>Aucun article</p>
+      <% } %> 
+
+
+    <%- include('include/footer') %>
+  </body>
+</html>
